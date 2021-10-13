@@ -1,2 +1,2 @@
 # DataMiningProject
-Ale fai il readme
+Ale fai il readme cazzo
