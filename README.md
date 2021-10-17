@@ -2,7 +2,7 @@
 ## Group Members
 - [Niko Dalla Noce](https://github.com/nikodallanoce)
 - [Alessandro Ristori](https://github.com/RistoAle97)
-- [Giuseppe Lombardi](https://github.com/)
+- [Giuseppe Lombardi](https://github.com/icezimmer)
 
 ## Project Description
 ### Task 1 Data Understanding and Preparation (30 points):
