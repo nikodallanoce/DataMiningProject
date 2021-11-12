@@ -1,0 +1,46 @@
+\documentclass[11pt, letterpaper]{article}  % change to >11 pt if you like, and change article with report
+\usepackage[letterpaper, top=3.71cm, bottom=3.20cm, left=2.86cm, right=2.86cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{url}
+%\usepackage{pythontex}
+\definecolor{bg}{gray}{0.95}
+\usepackage{minted}
+\usepackage{wrapfig}
+
+\title{\vspace{-2cm}\textbf{Data Mining project report}}
+\author{\textbf{\small{\textit{Dalla Noce Niko, Ristori Alessandro, Giuseppe Lombardi}}} \\ % put your full name here
+        \small{Master Degree in Computer science.}\\ \small{{n.dallanoce@studenti.unipi.it, a.ristori5@studenti.unipi.it, g.lombardi11@studenti.unipi.it}.} \\  % put your Master Degree here
+        \small{Data Mining, Academic Year: 2021/2022} \\
+        \small{Date: 10/11/2021} \\
+       \textbf{\small{\url{https://github.com/nikodallanoce/DataMiningProject}}}
+}
+
+\renewcommand\refname{} %remove this line to automatically show the bibliography header
+
+\begin{document}
+
+\nocite{*}  % comment this line to list only the articles you really cite
+\date{}
+\maketitle
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{images/unipi.png}\\
+    \vspace{0.5cm}
+\end{center}
+%\begin{abstract}
+%The report starts with a long, but needed introduction to the main concepts that we've seen during the course of our work and it shows what was our purpose and how we reached it. Then it shows the results obtained by the models we tried giving at the same time the reasons of their performances. The report concludes with our final considerations on what and how we could have done more.
+%\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+%\listoffigures
+%\include{chapters/introduction}
+\input{chapters/data_understanding}
+\input{chapters/data_preparation}
+\input{chapters/clustering}
+\end{document}
