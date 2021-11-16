@@ -60,3 +60,24 @@ strategies
 obtained
 - Optional (2 points): Explore the opportunity to use alternative clustering techniques in the library: https://github.com/annoviko/pyclustering/
 
+### Task 3: Predictive Analysis (30 POINTS)
+Consider the problem of predicting for each player a label that defines if s(he) is a high
+ranked player or a low ranked player (binary task) by exploiting the feature related to the
+rank of the players.
+The student need to:
+1. Define a player profile that enables the above player classification. For this task, you
+can exploit the profile created for the clustering task, by adding or removing features,
+depending on the results previously obtained.
+2. Compute the label for any customer. The extraction of the label can take advantage
+of several features related to the rank, such as loser_rank, winner_rank,
+loser_rank_points, winner_rank_points, etc. An example of simple label can be
+derived by:
+  - computing the average rank per player by exploiting loser_rank, winner_rank
+  - select a threshold for discretizing in two categorical labels the class.
+Note that you can define in different ways the labels.
+3. Perform the predictive analysis comparing the performance of different models,
+discussing the results and discussing the possible preprocessing that you applied to
+the data for managing possible problems identified that can make the prediction hard.
+Note that the evaluation should be performed on both training and test set.
+
+
