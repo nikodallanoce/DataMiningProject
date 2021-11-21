@@ -64,6 +64,7 @@ obtained
 Consider the problem of predicting for each player a label that defines if s(he) is a high
 ranked player or a low ranked player (binary task) by exploiting the feature related to the
 rank of the players.
+
 The student need to:
 1. Define a player profile that enables the above player classification. For this task, you
 can exploit the profile created for the clustering task, by adding or removing features,
