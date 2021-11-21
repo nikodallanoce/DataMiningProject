@@ -72,9 +72,9 @@ depending on the results previously obtained.
 of several features related to the rank, such as loser_rank, winner_rank,
 loser_rank_points, winner_rank_points, etc. An example of simple label can be
 derived by:
-  - computing the average rank per player by exploiting loser_rank, winner_rank
-  - select a threshold for discretizing in two categorical labels the class.
-Note that you can define in different ways the labels.
+    - computing the average rank per player by exploiting loser_rank, winner_rank
+    - select a threshold for discretizing in two categorical labels the class.
+    - Note that you can define in different ways the labels.
 3. Perform the predictive analysis comparing the performance of different models,
 discussing the results and discussing the possible preprocessing that you applied to
 the data for managing possible problems identified that can make the prediction hard.
