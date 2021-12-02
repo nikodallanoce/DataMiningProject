@@ -81,4 +81,16 @@ discussing the results and discussing the possible preprocessing that you applie
 the data for managing possible problems identified that can make the prediction hard.
 Note that the evaluation should be performed on both training and test set.
 
+### Task 4: Address one of the two tasks (32 POINTS - Optional)
+__Task 4.1: Time series analysis__
+Consider the dataset of time series CityGlobalTemperature2000-2009.csv containing for 100
+cities the temperature measurements (mean and standard deviation over a month). The goal
+of the task is to find groups of similar cities with respect to the temperature trends.
+
+__Task 4.2: Explanation Analysis__
+Consider the non-interpretable models used in Task 3 (eg. SVM, ensemble methods, etc)
+and study the global explanation with SHAP and the local explanation with LIME and SHAP.
+Use the evaluation metrics presented during the XAI Laboratory (for using LORE, you can
+download the library at the link: https://github.com/rinziv/XAI_lib_HAI-net_Tutorial and follow
+the instructions contained in the notebook presented during the XAI Laboratory).
 
