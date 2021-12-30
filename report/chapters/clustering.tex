@@ -1,9 +1,9 @@
 \section{Clustering analysis}
 \subsection{Preprocessing}
-In order to let the cluster algorithms work, we had to preprocess the data. Initially we tried to use the MinMax scaler, but we saw that K-Means was not working well. Due to that, we decided to normalize such features with their z-score by using the scikit-learn StandardScaler method. 
+In order to let the cluster algorithms work, we had to preprocess the data. Initially we tried to use the MinMax scaler, but we saw that K-Means wasn't working well. Due to that, we decided to normalize such features with their z-score by using the scikit-learn StandardScaler method.
 
 \subsection{K-Means}
-\subsubsection{Feature selection} In order to apply K-Means, we selected only some  features to avoid the course of dimensionality. \textbf{We selected the attributes that best differentiate strong players from weak ones}. We have also tried the PCA (principal components' analysis) approach to understand the most relevant features, but the results, obtained by the K-Means on these features, were not satisfying in terms of silhouette score. After several experiments, we obtained the best result choosing as parameters the number of tourney won (\textit{t\_won}), the percentage of wins (\textit{p\_wins}) and the rank (\textit{rank}) of each player.
+\subsubsection{Feature selection} In order to apply K-Means, we selected only some features to avoid the \textit{curse of dimensionality}, the chosen features are the ones \textbf{that best differentiate strong players from weak ones}. We have also tried the PCA (principal components' analysis) approach to understand the most relevant features, but the results, obtained by the K-Means on these features, were not satisfying in terms of silhouette score. After several experiments, we obtained the best result choosing as parameters the number of tourney won (\textit{t\_won}), the percentage of wins (\textit{p\_wins}) and the rank (\textit{rank}) of each player.
 We also tried different set of features (percentage of wins on each surface and statics) which we also explored with the k-means algorithm, but the explanation of the results it's not easy for someone who isn't fond of tennis, so we decided to work mainly with the three features listed before.
 
 \subsubsection{Choosing the best K}
@@ -23,20 +23,21 @@ The choice of the parameter k in the k-means approach is crucial since it identi
 \end{figure}
 
 \subsubsection{Cluster analysis}
-We applied the PCA on the previously chosen features to analyze the K-means results, then we showed the scatterplot of the first two principal components. As we can see in \autoref{fig:KMeansOut}, the players are divided from left to right by their skills: the weak ones, the average ones and the strong ones. The points on the top right correspond to the top tennis players, such as Djokovic, Nadal and Zverev; we have highlighted Novak Djokovic, the player with rank 1, in the plot to better show the distribution of the players by strength. We have noticed that some players with a high rank are in cluster 0, this is probably due to the fact that they have a high win rate or have won some minor tournaments.
+We applied the PCA on the previously chosen features to analyze the K-means results, then we showed the scatterplot of the first two principal components. As we can see in \autoref{fig:kmeansAvg}, the players are divided from left to right by their skills: the weak ones, the average ones and the strong ones. The points on the top right correspond to the top tennis players, such as Djokovic, Nadal and Zverev; we have highlighted Novak Djokovic, the player with rank 1, in the plot to better show the distribution of the players by strength. We have noticed that some players with a high rank are in cluster 0, this is probably due to the fact that they have a high win rate or have won some minor tournaments.
+
+%\begin{figure}[H]
+    %\centering
+    %\includegraphics[width=0.35\linewidth]{images/clustering/KMeans/KMeans_out.png}
+    %\caption{The 3 clusters obtained using K-Means.}
+    %\label{fig:KMeansOut}
+%\end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/clustering/KMeans/KMeans_out.png}
-    \caption{The 3 clusters obtained using K-Means.}
-    \label{fig:KMeansOut}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \subfloat{\includegraphics[width=0.30\linewidth]{images/clustering/KMeans/KMeans_stats_avg.png}}
-    \subfloat{\includegraphics[width=0.3\linewidth]{images/clustering/KMeans/KMeans_stats.png}}
-    \caption{Statistics of the feature for each cluster.}
+    \subfloat{\includegraphics[width=0.37\linewidth]{images/clustering/KMeans/KMeans_out.png}}
+    \subfloat{\includegraphics[width=0.31\linewidth]{images/clustering/KMeans/KMeans_stats_avg.png}}
+    \subfloat{\includegraphics[width=0.32\linewidth]{images/clustering/KMeans/KMeans_stats.png}}
+    \caption{The 3 clusters obtained using K-Means and statistics of the features for each cluster.}
     \label{fig:kmeansAvg}
 \end{figure}
 
@@ -44,7 +45,7 @@ We applied the PCA on the previously chosen features to analyze the K-means resu
 We decided to work with the dataframe used in the k-means analysis (the one with "t\_won", "p\_wins", "rank"), since we think that it better describes who are the best players and those who aren't.
 
 \subsubsection{Determining eps and min points}
-The distance between data points is computed using the Euclidean metric, and for selecting the best eps and min\_samples values we first performed a grid search whose results can be found on the notebook. From the results we choose $min\_samples=8$ and by looking at \autoref{fig:DBScanDist} we choose $eps=0.55$ since it's the value at which the graph's curvature is the highest. The silhouette score is equal to 0.6208
+The distance between data points is computed using the Euclidean metric, and for selecting the best eps and min\_samples values we first performed a grid search whose results can be found on the notebook. From the results we chose $min\_samples=8$ and by looking at \autoref{fig:DBScanDist} we chose $eps=0.55$ since it's the value at which the graph's curvature is the highest. The silhouette score is equal to 0.6208
 
 \begin{figure}[H]
     \centering
@@ -55,7 +56,7 @@ The distance between data points is computed using the Euclidean metric, and for
 \end{figure}
 
 \subsubsection{Cluster analysis}
-Analyzing the clusters obtained by the DBScan method (\autoref{fig:DBScanOut}), we've seen that there is a single large cluster (the orange one) and the blue points referring to the outliers. In the outliers' cluster there are the players at the extremes: the players who have won very few matches and the strongest players in the world, respectively on the left and right side of the main clsuter. There are also outliers in the center of the plot, representing players who have won some minor tournaments.
+Analyzing the clusters obtained by the DBScan method (\autoref{fig:DBScanOut}), we've seen that there is a single large cluster (the orange one) and the blue points referring to the outliers (or noise). In the outliers' cluster there are the players at the extremes: those who have won very few matches and the strongest players in the world, respectively on the left and right side of the main cluster. There are also outliers in the center of the plot, representing players who have won some minor tournaments despite not being among the strongest ones.
 
 \begin{figure}[H]
     \centering
@@ -66,13 +67,13 @@ Analyzing the clusters obtained by the DBScan method (\autoref{fig:DBScanOut}), 
 \end{figure}
 
 \subsection{Hierachical Clustering}
-The analysis of the clustering via hierarchical clustering has been conducted using the same set of attributes of the previous algorithms, in order to get results comparable in terms of indicators and properties among the approaches.
+The analysis of the hierarchical clustering has been conducted using the same set of attributes of the previous algorithms, in order to get results comparable in terms of indicators and properties among the approaches.
 
 \subsubsection{Distance methods}
-Like we did with the other clustering algorithms, we used the Euclidean metric to compute the distance between the pairs of points. We have tried several type of agglomerative clustering that differ by the merging criterion of the clusters like min, max, average and ward. In the hierarchical clustering approach, we have not assumed any particular number of clusters: any desired number of clusters can be obtained by ‘cutting’ the dendrogram at the proper level.
+Like we did with the other clustering algorithms, we used the Euclidean metric to compute the distance between the pairs of points. We have tried several types of agglomerative clustering that differ by the merging criterion of the clusters like min, max, average and ward. In the hierarchical clustering approach, we have not assumed any particular number of clusters: any desired number of clusters can be obtained by ‘cutting’ the dendrogram at the proper level.
 
 \subsubsection{Comparing dendrograms}
-\paragraph{Cut threshold} The "best cut" of the dendrograms, is a cut that passes from the longest vertical segment not interrupted by horizontal lines. Anyway we avoided to choose a cut that would have produced too unbalanced clusters.
+\paragraph{Cut threshold} The "best cut" of the dendrograms is a cut that passes from the longest vertical segment not interrupted by horizontal lines. Anyway we avoided to choose a cut that would have produced too unbalanced clusters.
 
 \begin{table}[H]
 \centering
@@ -84,7 +85,7 @@ Average  & 0: 1580, 1: 2, \hspace{2pt} \hspace{2pt} 2: 18 & 0.6485 \\
 Ward     & 0: 330, \hspace{2pt} 1: 296, 2: 974 & 0.3756 \\\hline  
 \end{tabular}
 \end{table}
-Even if the silhouette is pretty good using the single and average methods, we can not say the same thing looking at the dendrograms, since the clusters are unbalanced, and as a consequence, most of the points falls in one big cluster. The only exceptions in this behaviour is produced by applying Ward method, that produced an almost balanced clusters closer to the K-Means ones, as shown in \autoref{fig:hier_clusters}.
+Even if the silhouette is pretty good using the single and average methods, we can't say the same thing looking at the dendrograms, since the clusters are unbalanced, and as a consequence, most of the points fall into one big cluster. The only exceptions in this behaviour is produced by applying the Ward method, that produced an almost balanced clusters closer to the K-Means one, as shown in \autoref{fig:hier_clusters}.
 
 \begin{figure}[H]
     \centering
@@ -97,7 +98,10 @@ Even if the silhouette is pretty good using the single and average methods, we c
 \end{figure}
 
 \subsubsection{Comparing clusters}
-By looking at the pcas plot from \autoref{fig:hier_clusters}, we can define the hierarchical clusterings with complete and ward linkage as the best ones among the four methods. The single linkage was the worst one since it created two cluster with one player each (Djokivic and Nadal which are the best overall player), meanwhile the average one separated the extremely strong players (again Djokivic and Nadal) from the strong ones (green cluster) and the average or weak ones (blue cluster). The only approach that didn't have such drastic separation were the complete and ward linkages, which is why we considered them as the best among foru approaches.
+By looking at the pcas plot from \autoref{fig:hier_clusters}, we can define the hierarchical clusterings with complete and ward linkage as the best ones among the four methods. The single linkage was the worst one since it created two cluster with one player each (Djokivic and Nadal which are the best overall players), meanwhile the average one separated the extremely strong players (again Djokivic and Nadal) from the strong ones (green cluster) and the average or weak ones (blue cluster).
+\vspace{3mm}
+
+The only approaches that didn't have such drastic separation were the complete and ward linkages, which is why we considered them as the best among the four approaches.
 \begin{figure}[H]
     \centering
     \subfloat[Complete]{\includegraphics[width=0.4\linewidth]{images/clustering/Hierarchical/Hierac_complete_cluster.png}}
@@ -109,15 +113,18 @@ By looking at the pcas plot from \autoref{fig:hier_clusters}, we can define the 
 \end{figure}
 
 \subsection{Validation by external measures}
-We computed the \textit{similarity matrix} $S$ given a particular clustering. To obtain this matrix, the indices are sorted according to the labels of the clusters and the component $S(i,j)$ is equal to $e^{-d(i,j)}$, where $d(i,j)$ is the euclidean distance between the points $i$ and $j$. If we have well-separated clusters, then the similarity matrix should be roughly block-diagonal. We also computed the entropy of each feature per cluster: a low entropy score of each attribute indicates a more predictable and less uncertain trend within the clusters. 
+We computed the \textit{similarity matrix} $S$ given a particular clustering. To obtain this matrix, the indices are sorted according to the labels of the clusters and the component $S(i,j)$ is equal to $e^{-d(i,j)}$, where $d(i,j)$ is the euclidean distance between the points $i$ and $j$. If we have well-separated clusters, then the similarity matrix should be roughly block-diagonal.
+\vspace{3mm}
+
+We also computed the entropy of each feature per cluster: a low entropy score of each attribute indicates a more predictable and less uncertain trend within the clusters. 
 
 \begin{figure}[H]
     \centering
     \subfloat[Similarity Kmeans]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/KmeansSimMatrix.png}}
-    \subfloat[Entropy Kmeans]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/kmeansEntropy.png}}\\
-    \subfloat[Similarity\\Complete]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/completeSimMatrix.png}}   
-    \subfloat[Entropy Complete]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/completeEntropy.png}}\\
-    \subfloat[Similarity\\Ward]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/SimWard.png}}   
+    \subfloat[Similarity Complete]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/completeSimMatrix.png}}
+    \subfloat[Similarity Ward]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/SimWard.png}}\\
+    \subfloat[Entropy Kmeans]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/kmeansEntropy.png}}
+    \subfloat[Entropy Complete]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/completeEntropy.png}}
     \subfloat[Entropy Ward]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/EntropyWard.png}}\\
     \subfloat[Entropy Single]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/EntropySingle.png}}
     \subfloat[Entropy Average]{\includegraphics[width=0.3\linewidth]{images/clustering/Validation/EntropyAv.png}}
@@ -125,12 +132,8 @@ We computed the \textit{similarity matrix} $S$ given a particular clustering. To
     \label{fig:val_clusters}
 \end{figure}
 
-\iffalse
-We compute the \textit{cross-correlation} between the \textit{similarity matrix} of the clustering and the \textit{incidence matrix} (where the component $(i, j)$ is equal to $1$ if $i$ and $j$ are in the same cluster, $0$ otherwise). The \textit{incidence matrix} represents the similarity matrix of a perfect clustering, so high-values component of the cross-correlation matrix represents an high correlation of the two matrix in that offset.
-\fi
-
-\subsection{Other Clustering approaches explored}
-For the final work on clustering we went to explore two more approaches from the pyclustering package as suggested by the professor, our choice fell on X-Means and SOM soft-clustering.
+\subsection{Other clustering approaches explored}
+For the final work on clustering we went to explore two more approaches from the pyclustering 1\cite{Novikov2019} package as suggested by the professor, our choice fell on X-Means and SOM soft-clustering.
 \subsubsection{X-Means}
 From the pyclustering package documentation: X-means clustering method starts with the assumption of having a minimum number of clusters, and then dynamically increases them. X-means uses specified splitting criterion to control the process of splitting clusters.
 \vspace{3mm}

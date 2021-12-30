@@ -8,9 +8,10 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{url}
-%\usepackage{pythontex}
 \definecolor{bg}{gray}{0.95}
 \usepackage{minted}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{multirow}
 \usepackage{wrapfig}
 
 \title{\vspace{-2cm}\textbf{Data Mining project report}}
@@ -24,25 +25,29 @@
 \renewcommand\refname{} %remove this line to automatically show the bibliography header
 
 \begin{document}
-
 \nocite{*}  % comment this line to list only the articles you really cite
 \date{}
 \maketitle
 \begin{center}
-    \includegraphics[width=0.2\textwidth]{images/unipi.png}\\
+    \includegraphics[width=0.3\textwidth]{images/unipi.png}\\
     \vspace{0.5cm}
 \end{center}
-%\begin{abstract}
-%The report starts with a long, but needed introduction to the main concepts that we've seen during the course of our work and it shows what was our purpose and how we reached it. Then it shows the results obtained by the models we tried giving at the same time the reasons of their performances. The report concludes with our final considerations on what and how we could have done more.
-%\end{abstract}
+\begin{abstract}
+The report shows all the tasks considered during the project, from data understanding to time series analysis. The aim of the report is to explain what we did during our work while giving reasons about our choices and the results obtained.
+\end{abstract}
+\thispagestyle{empty}
 \newpage
+\thispagestyle{empty}
 \tableofcontents
-\newpage
+\thispagestyle{empty}
+%\newpage
 %\listoffigures
-%\include{chapters/introduction}
+\newpage
+\pagenumbering{arabic}
 \input{chapters/data_understanding}
 \input{chapters/data_preparation}
 \input{chapters/clustering}
 \input{chapters/predictive_analysis}
 \input{chapters/time_series_analysis}
+\include{chapters/references}
 \end{document}
