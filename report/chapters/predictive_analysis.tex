@@ -18,7 +18,7 @@ Before applying any of the following classification algorithms, we splitted the 
 
 The following results have been obtained by exploiting the best parameters carried out by the K-Fold cross validation, with K equal to 4, comparing the results by measuring the accuracy score between the K folds. For the lack of space, we will only show the graphical results for the male players, whereas in \autoref{subsect:comparison} we study the performance obtained by our models in both the male and female data set.
 
-\paragraph{Evaluation} In order to evaluate the goodness of our models, we'll show classification metrics like accuracy, precision, recall and F1 score. The miss-classified patterns can be numerically viewed by using the confusion matrix (label 0 for 'weak', 1 for 'strong') and graphically by plotting the ROC curve. Finally, for those models that are interpretable, we'll show the "global" weight that each feature had in the classification of the tennis players. Talking about the test set, it is made up of imbalanced data, having the same distribution as the original dataset, thus it's without any sampling strategy applied. This means that any of the following algorithm must beat the dummy classifier.
+\paragraph{Evaluation} In order to evaluate the goodness of our models, we'll show classification metrics like accuracy, precision, recall and F1 score. The miss-classified patterns can be numerically viewed by using the confusion matrix (label 0 for 'weak', 1 for 'strong') and graphically by plotting the ROC curve. Finally, we'll show the "global" weight that each feature had in the classification of the tennis players for those models that offer this capability. Talking about the test set, it is made up of imbalanced data, having the same distribution as the original dataset, thus it's without any sampling strategy applied. This means that any of the following algorithm must beat the dummy classifier.
 
 
 \subsubsection{Decision tree}
@@ -118,7 +118,7 @@ TabNet \cite{arik2020tabnet} is a novel high-performance and interpretable canon
 \end{figure}
 
 \subsection{Comparison} \label{subsect:comparison}
-In this section we show how the aforementioned algorithms performed in both the male and female datasets. In \autoref{tab:female_compare} and \autoref{tab:male_compare} we reported the performances in percentages. For each numerical entry, the first number is referred to the 'weak' class and the second one to the 'strong' class. In general, there wasn't a model that performed well in both the two data set as AdaBoost obtained the best performance on the female data set, whereas Random Forest in the male one. In the end, we can assert that AdaBoost was the best model overall, which is a good result because it is also interpretable. For this reason, we also compared the feature importance that this model associates to the male players with respect to the female players, as shown in \autoref{fig:FeatImpSex}.
+In this section we show how the aforementioned algorithms performed in both the female and male datasets. In \autoref{tab:female_compare} and \autoref{tab:male_compare} we reported the performances in percentages. For each numerical entry, the first number is referred to the 'weak' class and the second one to the 'strong' class. In general, there wasn't a model that performed well in both the two data set as AdaBoost obtained the best performance on the female data set, whereas Random Forest in the male one. In the end, we can assert that AdaBoost was the best model overall, which is a good result because it is also interpretable. For this reason, we also compared the feature importance that this model associates to the male players with respect to the female players, as shown in \autoref{fig:FeatImpSex}.
 
 \begin{table}[H]
 \footnotesize
@@ -138,7 +138,7 @@ KNN & 95/86 & 88/95 & 91/90 & 91 & 94/68 & 88/83 & 91/75 & 87\\
 \rowcolor{gray!40} Neural Network & 92/87 & 89/91 & 91/89 & 90 & 98/71 & 88/94 & 93/81 & 89\\
 TabNet & 97/85 & 86/97 & 91/91 & 91 & 93/70 & 89/78 & 91/74 & 87\\\hline \hline
 \end{tabular}
-\caption{A comparison between the performance of the algorithms used to classify the female players.}
+\caption{A comparison between the performance of the algorithms employed to classify the female players.}
 \label{tab:female_compare}
 \end{table}
 
@@ -159,7 +159,7 @@ SVM & 100/97 & 98/99 & 99/98 & 98 & 95/88 & 96/86 & 96/87 & 93\\
 \rowcolor{gray!40} Neural Network & 93/92 & 94/91 & 93/92 & 93 & 98/85 & 94/95 & 96/90 & 95\\
 \rowcolor{brown!50}TabNet & 94/88 & 90/93 & 92/90 & 91 & 97/85 & 94/93 & 96/89 & 94\\\hline \hline
 \end{tabular}
-\caption{A comparison between the performance of the algorithms used to classify the male players.}
+\caption{A comparison between the performance of the algorithms employed to classify the male players.}
 \label{tab:male_compare}
 \end{table}
 
@@ -167,6 +167,6 @@ SVM & 100/97 & 98/99 & 99/98 & 98 & 95/88 & 96/86 & 96/87 & 93\\
     \centering
     \subfloat[Features importance for female]{\includegraphics[width=0.35\linewidth]{images/predictive_analysis/comparison/ada_featImp_f.png}}
     \subfloat[Features importance for male]{\includegraphics[width=0.35\linewidth]{images/predictive_analysis/ada_boost/ada_imp_m.png}}
-    \caption{Features importance based on the sex of the player.}
+    \caption{Features importance to classify a player based on its sex.}
     \label{fig:FeatImpSex}
 \end{figure}
