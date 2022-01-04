@@ -22,7 +22,7 @@ We used the k-means clustering from the tslearn package to find those similar gr
 As \autoref{fig:timeseries_clusters} on the left shows, by using the elbow rule and by looking at the other two values we took 5 as the best value for k and the final clustering analysis is shown on \autoref{fig:timeseries_clusters} on the right end.
 \vspace{3mm}
 
-The cities are, therefore, separated in five different cluster in accordance to their temperature trends: \textit{warm winter and very hot summer}, \textit{cold winter and hot summer}, \textit{very hot winter and very hot summer}, \textit{warm winter and mild summer} and lastly \textit{very cold winter and mild summer}.
+The cities are, therefore, separated in five different clusters in accordance to their temperature trends: \textit{warm winter and very hot summer}, \textit{cold winter and hot summer}, \textit{very hot winter and very hot summer}, \textit{warm winter and mild summer} and lastly \textit{very cold winter and mild summer}.
 We then plotted those temperature trends on a graph in order to compare them between each other, the cities were, instead, plotted on a map according to the cluster they belong to.
 \begin{figure}[H]
     \centering
@@ -34,7 +34,7 @@ We then plotted those temperature trends on a graph in order to compare them bet
 The map in \autoref{fig:timeseries_plot_map} shows that cities in similar clusters are somewhat at the same latitude (which is something that we expected).
 
 \subsection{Feature-based clustering}
-As final clustering analysis on the time series, we decided to try the feature-based approach by defining new features from the ones we had and by doing the same work that we did for the shape-based clustering. The features we built were based on the mean temperatures for each season (keep in mind that seasons are different in the two emispheres) and then we inserted the mean, max and min temperatures recorded for each city.
+As final clustering analysis on the time series, we decided to try the feature-based approach by defining new features from the ones we had and by doing the same work that we did for the shape-based clustering. The features we built were based on the mean temperatures for each season (keep in mind that seasons are different in the two hemispheres) and then we inserted the mean, max and min temperatures recorded for each city.
 \begin{figure}[H]
     \centering
     \subfloat[Cluster trends]{\includegraphics[width=0.41\linewidth]{images/time_series_analysis/timeseries_fbc_plot.png}}
